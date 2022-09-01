@@ -1,100 +1,123 @@
 interface Version {
     version: string,
-    releaseDate: string,
+    releaseDate: Date,
     bugs: string[] | string,
     features: string[] | string,
     author: string[] | string,
     versionType: string
    }
+   
    // Version informations
    const data: Version[] = [{
-    version: "3.1.3",
-    releaseDate: "February 2, 2010",
-    bugs: ["Fixes issue"],
-    features: ["67A", "87Z"],
-    author: ["Apple", "Vivo"],
-    versionType: "patch"
-   },
-   {
-    version: "4.2.1",
-    releaseDate: "November 22, 2010",
-    bugs: ["performance"],
-    features: ["67A", "76K"],
-    author: ["Oppo", "Samsung"],
-    versionType: "Enhancement"
-   },
-   {
-    version: "5.1.1",
-    releaseDate: "May 7, 2012",
-    bugs: ["Fixes battery drain bug."],
-    features: ["91A", "55B"],
-    author: ["Apple", "Samsung"],
-    versionType: "patch"
-   },
-   {
-    version: "6.1.6",
-    releaseDate: "February 21, 2014",
-    bugs: ["audio profile for speakerphone"],
-    features: ["56A", "34A"],
-    author: ["Apple", "Xiomi"],
-    versionType: "major"
-   },
-   {
-    version: "7.1.2",
-    releaseDate: "June 30, 2014",
-    bugs: ["Stability"],
-    features: ["45G", "45J"],
-    author: ["Xiomi"],
-    versionType: "patch"
-   }
-   ]
+    version:'MIUI V5',
+    releaseDate:new Date (' 1 March 2013'),
+    features:['New user interface','Google Services were removed from the Chinese version'],
+    bugs:['BGSG01','BGB02','bgok03'],
+    author:['A','B','C','D'],
+    versionType:'enhancement'
+},
+{
+    version:'MIUI 6',
+    releaseDate:new Date('29 August 2014'),
+    features:['Dropped devices running Android Jelly Bean or below'],
+    bugs:['BGSG01','BGB02','bgok03'],
+    author:['A','B','C','D'],
+    versionType:'enhancement'
+},
+{
+    version:'MIUI 7',
+    releaseDate:new Date('13 August 2015'),
+    features:[' Locked bootloader on selected old devices and all released afterwards'],
+    bugs:['BGSG01','BGB02','bgok03'],
+    author:['A','B','C','D'],
+    versionType:'enhancement'
+},
+{
+    version:'MIUI 8',
+    releaseDate:new Date('16 June 2016'),
+    features:['Added support for Second Space and Dual apps. '],
+    bugs:['BGSG01','BGB02','bgok03'],
+    author:['A','B','C','D'],
+    versionType:'enhancement'
+},
+{
+    version:'MIUI 9',
+    releaseDate:new Date('10 August 2017'),
+    features:[' Improved Notification Shade and QuickCard'],
+    bugs:['BGSG01','BGB02','bgok03'],
+    author:['A','B','C','D'],
+    versionType:'enhancement'
+},
+{
+    version:'MIUI 10',
+    releaseDate:new Date('19 June 2018'),
+    features:['New recent apps screen, volume control, Clock, Calendar and Notes '],
+    bugs:['BGSG01','BGB02','bgok03'],
+    author:['A','B','C','D'],
+    versionType:'enhancement'
+},
+{
+    version:'MIUI 11',
+    releaseDate:new Date('22 October 2019'),
+    features:['System-wide dark mode, with dark mode scheduling. '],
+    bugs:['BGSG01','BGB02','bgok03'],
+    author:['A','B','C','D'],
+    versionType:'enhancement'
+},
+{
+    version:'MIUI 12',
+    releaseDate:new Date ('27 April 2020'),
+    features:['More privacy focused '],
+    bugs:['BGSG01','BGB02','bgok03'],
+    author:['A','B','C','D'],
+    versionType:'enhancement'
+}
+]
    // find Information by Year
    function findByReleaseYear(year: any) {
-    console.log("---------------------------------------------------------------------------")
-    let filteredYear = data.filter(n => n.releaseDate.includes(year))
+   let filteredYear = data.filter(n => n.releaseDate.toString().includes(year))
     console.log(`${filteredYear.length} versions were released in Year ${year}`)
     console.log(filteredYear)
-    console.log("---------------------------------------------------------------------------")
+    
    }
    // find Information by Bug
    function findByBug(str: string) {
-    console.log("---------------------------------------------------------------------------")
     let bug = data.filter(n => n.bugs.includes(str))
     console.log(`${bug.length} version have ${str} Bug...`)
     console.log(bug)
     console.log(bug.length, "Bugs")
-    console.log("---------------------------------------------------------------------------")
+    
    }
    // find Information by Type
-   function findByType(type: string) {
-    console.log("---------------------------------------------------------------------------")
+   function findByversionType(type: string) {
+    
     let findType = data.filter(n => n.versionType.includes(type))
     console.log(`${findType.length} versions have ${type} type...`)
     console.table(findType)
-    console.log("---------------------------------------------------------------------------")
+    
    }
    // find Information by Features
-   function findByFeature(str: string) {
-    console.log("---------------------------------------------------------------------------")
+   function findByfeatures(str: string) {
+    
     let feature = data.filter(n => n.features.includes(str))
     console.log(`${feature.length} versions have ${str} Feature...`)
     console.log(feature)
-    console.log("---------------------------------------------------------------------------")
+    
    }
-   // find Information by Author Name
-   function findByAuthor(name: string) {
+   /*find Information by Author Name
+   function findByauthor(name: string) {
     console.log("---------------------------------------------------------------------------")
     let authorName = data.filter(n => n.author.includes(name))
     console.log(`${authorName.length} version developed by ${name}...`)
     console.log(authorName)
     console.log("---------------------------------------------------------------------------")
-   }
+   }*/
    // find Information by Version
-   function findByVersion(ver: string) {
-    console.log("---------------------------------------------------------------------------")
+   function findByversion(ver: string) {
+    
     let version = data.filter(n => n.version == ver)
     console.log(version)
-    console.log("---------------------------------------------------------------------------")
+    
    }
    // Finding which author had more Updated
    function findHighestUpdatedByAuthor() {
@@ -119,15 +142,14 @@ interface Version {
     }
     m = 0
     }
-    console.log("---------------------------------------------------------------------------")
+    
     console.log(`The author ${authorName} has worked on more no of releases, the count is ${mostFrequent}`)
-    console.log("---------------------------------------------------------------------------")
+   
    }
-   //---------------------------------------------------------------------------------------
+   
    findHighestUpdatedByAuthor()
    findByType("patch")
-   findByBug("Stability")
-   findByReleaseYear(2010)
+   findByBug("BGSG01")
+   findByReleaseYear("2020")
    findByFeature("67A")
-   findByAuthor("Apple")
-   findByVersion("5.1.1")
+   findByversion("MIUI 8")
